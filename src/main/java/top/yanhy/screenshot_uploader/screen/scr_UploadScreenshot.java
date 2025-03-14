@@ -1,4 +1,4 @@
-package top.yanhy;
+package top.yanhy.screenshot_uploader.screen;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -12,19 +12,21 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import top.yanhy.screenshot_uploader.Screenshot_uploader;
+import top.yanhy.screenshot_uploader.UploadHttpApi;
 
 import java.io.File;
 
-import static top.yanhy.Screenshot_uploader.*;
+import static top.yanhy.screenshot_uploader.Screenshot_uploader.*;
 
 
-public class UploadScreenshotScreen extends Screen {
+public class scr_UploadScreenshot extends Screen {
     private static final Logger LOGGER = LogManager.getLogger("ScreenshotUploader");
     private final String filename;
     private TextFieldWidget descriptionField;
     private TextFieldWidget albumField;
 
-    public UploadScreenshotScreen(String filename) {
+    public scr_UploadScreenshot(String filename) {
         super(Text.literal("上传图片到图片墙"));
         this.filename = filename;
     }

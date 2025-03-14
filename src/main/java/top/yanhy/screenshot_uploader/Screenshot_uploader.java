@@ -1,4 +1,4 @@
-package top.yanhy;
+package top.yanhy.screenshot_uploader;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
@@ -10,22 +10,20 @@ import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.ScreenshotRecorder;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.HoverEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
 
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import top.yanhy.screenshot_uploader.screen.scr_EditConfig;
+import top.yanhy.screenshot_uploader.screen.scr_UploadScreenshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,25 +69,26 @@ public class Screenshot_uploader implements ClientModInitializer {
 		registerClientCommands();
 		LOGGER.info("客户端命令注册成功");
 
-		UseItemCallback.EVENT.register((player, world, hand) -> {
-			ItemStack itemStack = player.getStackInHand(hand);
-			if (itemStack.getItem() == Items.SPYGLASS && itemStack.getName().getString().contains("相机")) {
-				if (world.isClient) {
-					screenshot();
-					return ActionResult.FAIL;
-				}
-				return ActionResult.FAIL;
-			}
-			return ActionResult.PASS;
-		});
-		LOGGER.info("注册物品成功");
+//		UseItemCallback.EVENT.register((player, world, hand) -> {
+//			ItemStack itemStack = player.getStackInHand(hand);
+//			if (itemStack.getItem() == Items.SPYGLASS && itemStack.getName().getString().contains("相机")) {
+//				if (world.isClient) {
+//					screenshot();
+//					return ActionResult.FAIL;
+//				}
+//				return ActionResult.FAIL;
+//			}
+//			return ActionResult.PASS;
+//		});
+//		LOGGER.info("注册物品成功");
 
 		uploadHttpApi = UploadHttpApi.getInstance();
-		// 注册客户端停止事件
+
 		ClientLifecycleEvents.CLIENT_STOPPING.register(client -> {
 			if (uploadHttpApi != null) {
 				uploadHttpApi.shutdown();
 				LOGGER.info("UploadHttpApi 线程池已关闭。");
+
 			}
 		});
 	}
@@ -127,6 +126,7 @@ public class Screenshot_uploader implements ClientModInitializer {
                                 }))
         ));
 	}
+
 
 	private void screenshot() {
 		if (Objects.equals(USERTOKEN, "token" ) || Objects.equals(SERVERHOST, "example.com")){
@@ -180,7 +180,7 @@ public class Screenshot_uploader implements ClientModInitializer {
 	private int executeUploadCommandwithargs(FabricClientCommandSource source,String  filename) {
 		MinecraftClient client = MinecraftClient.getInstance();
 		if (client.player != null) {
-			client.execute(() -> client.setScreen(new UploadScreenshotScreen(filename)));
+			client.execute(() -> client.setScreen(new scr_UploadScreenshot(filename)));
 		}
 		return Command.SINGLE_SUCCESS;
 	}
@@ -207,7 +207,7 @@ public class Screenshot_uploader implements ClientModInitializer {
 	private void setUserToken() {
 		MinecraftClient client = MinecraftClient.getInstance();
 		if (client.player != null) {
-			client.execute(() -> client.setScreen(new EditConfigScreen()));
+			client.execute(() -> client.setScreen(new scr_EditConfig()));
 		}
 	}
 

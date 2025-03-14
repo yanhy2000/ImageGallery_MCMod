@@ -1,4 +1,4 @@
-package top.yanhy;
+package top.yanhy.screenshot_uploader;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Properties;
 
-import static top.yanhy.Screenshot_uploader.CONFIG_VERSION;
+import static top.yanhy.screenshot_uploader.Screenshot_uploader.CONFIG_VERSION;
 
 
 public class ConfigHandler {

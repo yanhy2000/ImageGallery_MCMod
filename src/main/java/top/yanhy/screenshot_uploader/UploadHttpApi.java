@@ -1,4 +1,4 @@
-package top.yanhy;
+package top.yanhy.screenshot_uploader;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 
-import static top.yanhy.Screenshot_uploader.MOD_NAME;
+import static top.yanhy.screenshot_uploader.Screenshot_uploader.MOD_NAME;
 
 public class UploadHttpApi {
 

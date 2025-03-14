@@ -32,7 +32,7 @@
    使用 `cd` 命令进入包含 `build.gradle` 文件的项目目录，例如：
    ```bash
    cd /path/to/ImageGallery_MCMod
-  ```
+   ```
 
 3. **编译项目**：
    如果您已安装 Gradle，可以直接运行以下命令：
@@ -49,14 +49,8 @@
    ```
 
 4. **查看编译结果**：
-   编译成功后，您可以在 `build/libs` 目录下找到生成的 JAR 文件。
+   编译成功后，您可以在 `build/libs` 目录下找到生成的 JAR 文件。安装到mc fabric客户端中即可使用。
 
-## 运行项目
-
-要运行编译后的项目，您可以使用以下命令：
-```bash
-java -jar build/libs/screenshot_uploader-*.jar
-```
 
 ## 使用示例
 

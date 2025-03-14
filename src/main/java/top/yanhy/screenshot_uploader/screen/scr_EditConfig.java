@@ -1,4 +1,4 @@
-package top.yanhy;
+package top.yanhy.screenshot_uploader.screen;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -8,18 +8,19 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.text.Text;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import top.yanhy.screenshot_uploader.ConfigHandler;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import static top.yanhy.Screenshot_uploader.*;
+import static top.yanhy.screenshot_uploader.Screenshot_uploader.*;
 
 
-public class EditConfigScreen extends Screen {
+public class scr_EditConfig extends Screen {
     private static final Logger LOGGER = LogManager.getLogger("ScreenshotUploader");
     private TextFieldWidget userTokenField;
 
-    public EditConfigScreen() {
+    public scr_EditConfig() {
         super(Text.literal("图片墙Token配置"));
     }
 

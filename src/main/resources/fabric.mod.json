@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"client": [
-			"top.yanhy.Screenshot_uploader"
+          "top.yanhy.screenshot_uploader.Screenshot_uploader"
 		]
 	},
 	"mixins": [],
