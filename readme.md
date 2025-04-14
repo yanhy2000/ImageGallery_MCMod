@@ -19,7 +19,7 @@
 
 在编译项目之前，请确保您已安装以下软件：
 
-- [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)（建议使用版本 11 或更高）
+- [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)（建议使用版本 21 或更高）
 - [Gradle](https://gradle.org/install/)（如果尚未安装，可以选择使用 Gradle Wrapper）
 
 ## 编译步骤
