@@ -3,9 +3,10 @@
 搭配图片墙使用，适用于minecraft fabric客户端。
 
 开发版本：
-- Minecraft =1.21.4
-- Fabric Loader >=0.16.10
-
+minecraft_version=1.21.7
+yarn_mappings=1.21.7+build.4
+loader_version=0.16.14
+fabric_version=0.128.2+1.21.7
 
 ## 目录
 
