@@ -16,6 +16,7 @@ import top.yanhy.screenshot_uploader.Screenshot_uploader;
 import top.yanhy.screenshot_uploader.UploadHttpApi;
 
 import java.io.File;
+import java.net.URI;
 
 import static top.yanhy.screenshot_uploader.Screenshot_uploader.*;
 
@@ -95,8 +96,8 @@ public class scr_UploadScreenshot extends Screen {
                     Text openWebUrlButton = Text.literal(" [打开图片墙网站] ")
                             .setStyle(Style.EMPTY
                                     .withColor(0x00FF00)
-                                    .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, WEBURL))
-                                    .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal("点击打开图片墙网站。")))
+                                    .withClickEvent(new ClickEvent.OpenUrl(URI.create(WEBURL)))
+                                    .withHoverEvent(new HoverEvent.ShowText(Text.literal("点击打开图片墙网站")))
                             );
                     Text message = Text.literal(MOD_NAME + "上传成功!")
                             .append(openWebUrlButton);

@@ -69,19 +69,6 @@ public class Screenshot_uploader implements ClientModInitializer {
 		registerClientCommands();
 		LOGGER.info("客户端命令注册成功");
 
-//		UseItemCallback.EVENT.register((player, world, hand) -> {
-//			ItemStack itemStack = player.getStackInHand(hand);
-//			if (itemStack.getItem() == Items.SPYGLASS && itemStack.getName().getString().contains("相机")) {
-//				if (world.isClient) {
-//					screenshot();
-//					return ActionResult.FAIL;
-//				}
-//				return ActionResult.FAIL;
-//			}
-//			return ActionResult.PASS;
-//		});
-//		LOGGER.info("注册物品成功");
-
 		uploadHttpApi = UploadHttpApi.getInstance();
 
 		ClientLifecycleEvents.CLIENT_STOPPING.register(client -> {
@@ -114,8 +101,8 @@ public class Screenshot_uploader implements ClientModInitializer {
                                         Text configButton = Text.literal("[开启窗口]")
                                                 .setStyle(Style.EMPTY
                                                         .withColor(0x00FF00)
-                                                        .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/uploadScreenshot settoken"))
-                                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal("点击打开配置页面。")))
+														.withClickEvent(new ClickEvent.RunCommand("/uploadScreenshot settoken"))
+														.withHoverEvent(new HoverEvent.ShowText(Text.literal("点击打开配置窗口")))
                                                 );
                                         Text message = Text.literal(MOD_NAME + "正在打开配置窗口,如未打开,尝试" )
                                                 .append(configButton);
@@ -134,8 +121,8 @@ public class Screenshot_uploader implements ClientModInitializer {
 				Text configButton = Text.literal("[修改Token]")
 						.setStyle(Style.EMPTY
 								.withColor(0x00FF00)
-								.withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/uploadScreenshot settoken"))
-								.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal("点击打开配置页面。")))
+								.withClickEvent(new ClickEvent.RunCommand("/uploadScreenshot settoken"))
+								.withHoverEvent(new HoverEvent.ShowText(Text.literal("点击打开配置窗口")))
 						);
 				Text message = Text.literal(MOD_NAME + "请先设置用户Token。" )
 						.append(configButton);
@@ -158,8 +145,8 @@ public class Screenshot_uploader implements ClientModInitializer {
 								Text uploadButton = Text.literal("[上传到图片墙]")
 										.setStyle(Style.EMPTY
 												.withColor(0x00FF00)
-												.withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/uploadScreenshot " + file_path))
-												.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal("点击上传截图到图片墙。")))
+												.withClickEvent(new ClickEvent.RunCommand("/uploadScreenshot " + file_path))
+												.withHoverEvent(new HoverEvent.ShowText(Text.literal("点击上传截图到图片墙")))
 										);
 								Text message = Text.literal(MOD_NAME + "截图已保存。")
 										.append(uploadButton);
